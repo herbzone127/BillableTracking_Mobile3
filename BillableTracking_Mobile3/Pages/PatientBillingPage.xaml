@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillableTracking_Mobile3.Pages.PatientBillingPage"
+             Title="PatientBillingPage"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=_viewModel}">
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <!-- Patient Information -->
+        <Label Text="Patient Information" FontAttributes="Bold" />
+        <Label Text="{Binding VisitDate}" HorizontalOptions="End" />
+        <HorizontalStackLayout>
+            <Label Text="Name: " VerticalOptions="Center" />
+            <Label Text="{Binding PatientName}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Patient ID: " VerticalOptions="Center" />
+            <Label Text="{Binding PatientId}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Insurance: " VerticalOptions="Center" />
+            <Label Text="{Binding Insurance}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <!-- Select Billable Item -->
+        <Label Text="Select Billable Item" FontAttributes="Bold" />
+        <Picker Title="Select an item..."
+                ItemsSource="{Binding BillableItems}"
+                ItemDisplayBinding="{Binding itemName}"
+                SelectedItem="{Binding SelectedBillableItem}" />
+
+        <!-- Notes -->
+        <Label Text="Notes" FontAttributes="Bold" />
+        <Editor Placeholder="Enter additional notes here..."
+                Text="{Binding Notes}"
+                HeightRequest="100" />
+
+        <!-- Selected Service Details -->
+        <Label Text="Selected Service Details" FontAttributes="Bold" />
+        <HorizontalStackLayout>
+            <Label Text="Service: " VerticalOptions="Center" />
+            <Label Text="{Binding SelectedService}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Code: " VerticalOptions="Center" />
+            <Label Text="{Binding ServiceCode}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Amount: " VerticalOptions="Center" />
+            <Label Text="{Binding ServiceAmount}" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <!-- Save Record Button -->
+        <Button Text="Save Record"
+                Command="{Binding SaveRecordCommand}"
+                BackgroundColor="Black"
+                TextColor="White"
+                Margin="0,20,0,0" />
+
+        <!-- Sync Information -->
+        <HorizontalStackLayout HorizontalOptions="FillAndExpand">
+            <Label Text="{Binding SyncStatus}" VerticalOptions="Center" />
+            <Button Text="Sync Now"
+                    Command="{Binding SyncNowCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HorizontalOptions="End" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

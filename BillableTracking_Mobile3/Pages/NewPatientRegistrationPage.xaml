@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillableTracking_Mobile3.Pages.NewPatientRegistrationPage"
+             Title="NewPatientRegistrationPage"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=ViewModel}">
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <!-- Camera Capture Section -->
+        <Frame BackgroundColor="DarkBlue" HeightRequest="200" HorizontalOptions="Fill">
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="camera.png" HeightRequest="50" WidthRequest="50" />
+                <Label Text="Tap to capture patient sticker" TextColor="White" />
+                <Button Text="Capture" Command="{Binding CaptureCommand}" BackgroundColor="White" TextColor="Black" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Insurance Company -->
+        <Label Text="Insurance Company" FontAttributes="Bold" />
+        <Picker Title="Select insurance company" 
+                ItemDisplayBinding="{Binding name}"
+                ItemsSource="{Binding InsuranceCompanies}" 
+                SelectedItem="{Binding SelectedInsuranceCompany}" />
+
+        <!-- Unit Record -->
+        <Label Text="Unit Record" FontAttributes="Bold" />
+        <Label Text="{Binding UnitRecord}" />
+
+        <!-- Admission Record -->
+        <Label Text="Admission Record" FontAttributes="Bold" />
+        <Label Text="{Binding AdmissionRecord}" />
+
+        <!-- Patient ID -->
+        <Label Text="Patient ID" FontAttributes="Bold" />
+        <Label Text="Generated after submission" TextColor="Gray" />
+
+        <!-- Sync Status -->
+        <Label Text="{Binding SyncStatus}" FontAttributes="Italic" TextColor="Gray" />
+
+        <!-- Buttons -->
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Save Record" 
+                    Command="{Binding SaveRecordCommand}"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="CenterAndExpand"/>
+            <Button Text="Sync Now" 
+                    Command="{Binding SyncNowCommand}"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="CenterAndExpand"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillableTracking_Mobile3.MainPage">
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <!-- Placeholder for Image Preview (optional) -->
+        <Frame BorderColor="Black" HeightRequest="200" HorizontalOptions="Fill">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label x:Name="lblPlaceHolder" Text="Place barcode here and press Scan" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image IsVisible="False" x:Name="img" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <!-- Unit Record Number Entry -->
+        <Entry Placeholder="Enter Unit Record Number" Text="{Binding UnitRecordNumber}" />
+
+        <!-- Display URN and Admission Number -->
+        <Label Text="{Binding UnitRecordNumberDisplay}" FontAttributes="Bold" />
+        <Label Text="{Binding AdmissionNumberDisplay}" FontAttributes="Bold" />
+
+        <!-- Patient Found Indicator -->
+        <HorizontalStackLayout IsVisible="{Binding IsPatientFound}">
+            <Label Text="Patient Found" TextColor="Green" />
+            <Label Text="Existing record in system" TextColor="Gray" Margin="10,0,0,0" />
+            <Image Source="checkmark.png" HeightRequest="20" WidthRequest="20" />
+        </HorizontalStackLayout>
+
+        <!-- Scan Button -->
+        <Button Text="SCAN"
+                Command="{Binding ScanCommand}"
+                BackgroundColor="Black"
+                TextColor="White"
+                Margin="0,20,0,0" />
+
+        <!-- Proceed to Patient Record Button -->
+        <Button Text="PROCEED TO PATIENT RECORD"
+                Command="{Binding ProceedToPatientRecordCommand}"
+                BackgroundColor="Black"
+                TextColor="White"
+                Margin="0,20,0,0" />
+
+        <!-- New Patient Registration Button -->
+        <Button Text="NEW PATIENT REGISTRATION"
+                Command="{Binding NewPatientRegistrationCommand}"
+                IsEnabled="{Binding IsNewPatientRegistrationEnabled}"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                BorderColor="Black"
+                BorderWidth="1" />
+    </VerticalStackLayout>
+</ContentPage>

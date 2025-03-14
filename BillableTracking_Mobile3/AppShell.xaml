@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BillableTracking_Mobile3.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BillableTracking_Mobile3"
+ xmlns:pages="clr-namespace:BillableTracking_Mobile3.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Title="BillableTracking_Mobile3">
+
+    <ShellContent Title="Login"
+                  ContentTemplate="{DataTemplate pages:LoginPage}"
+                  Route="LoginPage"
+                  IsVisible="True" />
+
+    <ShellContent Title="Main"
+                  ContentTemplate="{DataTemplate local:MainPage}"
+                  Route="MainPage"
+                  IsVisible="True" />
+
+    <ShellContent Title="AccessStatusPage"
+                  ContentTemplate="{DataTemplate pages:AccessStatusPage}"
+                  Route="AccessStatusPage"
+                  IsVisible="True" />
+    <ShellContent Title="PatientBilling"
+              ContentTemplate="{DataTemplate pages:PatientBillingPage}"
+              Route="PatientBilling"
+              IsVisible="True" />
+    <ShellContent Title="AccessStatusPage"
+           ContentTemplate="{DataTemplate pages:NewPatientRegistrationPage}"
+           Route="NewPatientRegistration"
+           IsVisible="True" />
+</Shell>

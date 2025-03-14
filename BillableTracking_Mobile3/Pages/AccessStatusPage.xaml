@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillableTracking_Mobile3.Pages.AccessStatusPage"
+             Title="AccessStatusPage">
+    <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+        <Label Text="Access Status"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Frame CornerRadius="10" 
+               Padding="20" 
+               BackgroundColor="{Binding StatusBackgroundColor}" 
+               HorizontalOptions="Center">
+            <VerticalStackLayout>
+                <Image Source="{Binding StatusIcon}" 
+                       HeightRequest="60" 
+                       WidthRequest="60" 
+                       HorizontalOptions="Center" />
+                <Label Text="{Binding StatusMessage}" 
+                       FontSize="20" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" />
+                <Label Text="{Binding StatusDescription}" 
+                       FontSize="16" 
+                       HorizontalOptions="Center" 
+                       TextColor="Gray" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Button Text="Continue"
+                Command="{Binding ContinueCommand}"
+                BackgroundColor="Black"
+                TextColor="White"
+                CornerRadius="5"
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                IsEnabled="{Binding IsVerified}" />
+
+        <Button Text="Logout"
+                Command="{Binding LogoutCommand}"
+                BackgroundColor="Gray"
+                TextColor="White"
+                CornerRadius="5"
+                HorizontalOptions="Center"
+                WidthRequest="200" />
+    </VerticalStackLayout>
+</ContentPage>
